@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load lesson_tags %}
+
+{% block content %}
+
+<h3>lesson list</h3>
+<ul>
+    {% for item in lesson_list %}
+        <li>
+            {{ item.title }}
+            <a href="{% url 'lessons:lesson-detail' item.id %}" class="badge badge-secondary"> Detail </a>
+        </li>
+    {% endfor %}
+
+    {% include "lessons/lesson/pagination.html" with page=page_obj %}
+    
+
+</ul>
+
+<div>
+    <hr />
+    {% total_lesson %}
+    {% most_important_lesson %}
+    {{ 'some_dumy_text'|cut:'_' }}
+    <hr />
+</div>
+
+{% endblock %}
+

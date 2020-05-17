@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load miniproject_tags %}
+{% load bootstrap_pagination %}
+
+{% block content %}
+
+<br />
+<h3>There are <b>{% total_miniproject %}</b> miniproject availible</h3>
+   
+
+
+        {% for item in miniproject_list %}
+        <div class="card">
+            <h4 class="card-header">{{ item.title }}</h4>
+            <div class="card-body">
+                <h5 class="card-title">Created By <a href="#">Moona Panda</a></h5>
+                <p class="card-text">{{ item.description|truncatechars:255}}</p>
+                <a href="{% url 'miniprojects:miniproject-detail' item.id %}" class="btn btn-dark">Details</a>
+            </div>
+        </div>
+        <br />
+        {% endfor %}
+
+        {% bootstrap_paginate page_obj %}
+        
+
+
+<div class="col-4">
+    {% most_important_miniproject %}
+</div>
+
+
+{% endblock %}

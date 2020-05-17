@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+ 
+<h3>Create New lesson</h3>
+
+<form action="{% url 'lessons:lesson-add' %}" method="post" novalidate class="uniForm">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create"></p>
+</form>
+
+
+{% endblock %}
+

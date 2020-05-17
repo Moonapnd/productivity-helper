@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load miniproject_tags %}
+
+{% block content %}
+
+ 
+<h3>miniproject Information</h3>
+
+<div>
+
+    {% if miniproject.tags.all %}
+        <p>tags for this miniproject</p>
+        <ul>
+            {% for tag in miniproject.tags.all %}
+                <li>
+                    <a href="{% url 'miniprojects:miniproject-list' tag.id %}"> {{ tag.name }} </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tags for this miniproject</p>
+    {% endif %}
+
+    <p><b>title: </b>{{ miniproject.title }}</p>
+    <p><b>description: </b>{{ miniproject.description|markdown }}</p>
+
+    <div>
+        <p>
+            <a href="{% url 'miniprojects:miniproject-update' miniproject.id %}" class="btn btn-secondary"> Update </a>
+        </p>
+        <p>
+            <a href="{% url 'miniprojects:miniproject-delete' miniproject.id %}" class="btn btn-danger"> delete </a>
+        </p>
+    </div>
+
+
+</div>
+
+{% endblock %}

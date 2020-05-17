@@ -1,0 +1,15 @@
+
+<div>
+
+    <p>Most Important lessons </p>
+    <ul>
+        {% for choice in choices %}
+            <li>
+                <a href="{{ choice.get_absolute_url }}">{{ choice.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+

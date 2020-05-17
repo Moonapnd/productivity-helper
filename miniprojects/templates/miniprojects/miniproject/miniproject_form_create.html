@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+ 
+<h3>Create New miniproject</h3>
+
+<form action="{% url 'miniprojects:miniproject-add' %}" method="post" novalidate class="uniForm">
+
+    {{ form|crispy }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create miniproject"></p>
+</form>
+
+
+
+{% endblock %}

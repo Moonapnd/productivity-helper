@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load lesson_tags %}
+
+{% block content %}
+
+ 
+<h3>lesson Information</h3>
+
+<div>
+
+    {% if lesson.tags.all %}
+        <p>tags for this lesson</p>
+        <ul>
+            {% for tag in lesson.tags.all %}
+                <li>
+                    <a href="{% url 'lessons:lesson-list' tag.id %}"> {{ tag.name }} </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tags for this lesson</p>
+    {% endif %}
+
+    <p><b>title: </b>{{ lesson.title }}</p>
+    <p><b>description: </b>{{ lesson.description|markdown }}</p>
+
+    <div>
+        <p>
+            <a href="{% url 'lessons:lesson-update' lesson.id %}" class="badge badge-secondary"> Update </a>
+        </p>
+        <p>
+            <a href="{% url 'lessons:lesson-delete' lesson.id %}" class="badge badge-danger"> delete </a>
+        </p>
+    </div>
+
+    <p>{{ file_uploaded }}</p>
+
+</div>
+
+{% endblock %}
+

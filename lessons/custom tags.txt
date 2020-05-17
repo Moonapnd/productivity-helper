@@ -1,0 +1,54 @@
+
+-----------------------
+models.py
+...
+templatetags/
+    __init__.py
+    miniproject_tags.py
+-----------------------
+
+# app.templatetags.miniproject_tags.py
+
+from django import template
+from ..models import Miniproject
+
+register = template.Library()
+
+@register.simple_tag
+def total_miniproject():
+    return Miniproject.objects.count()
+
+@register.inclusion_tag('miniprojects/miniproject/most_important_miniproject.html')
+def most_important_miniproject(num=5):
+    choices = Miniproject.objects.all()[:num]
+    return {'choices': choices}
+
+@register.filter
+def cut(value, arg):
+    return value.replace(arg, ' ')
+
+
+# most_important_miniproject.html
+<ul>
+    {% for choice in choices %}
+        <li>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+# load tags 
+# base.html or miniproject_detail.html !!!!!!!!
+{% load miniproject_tags %}
+
+
+# invoque tag 
+# miniproject_detail.html
+{% total_miniproject %}
+{% show_results poll %}
+
+----------------------------------------------------------------------------------------------
+
+check out the official docs of Markdown 
+create Markdown filter from Django 2 book (page 167 Creating custom template filters)
