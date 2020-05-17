@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'miniprojects.apps.MiniprojectsConfig',
     'lessons.apps.LessonsConfig',
-    'learningforms.apps.LearningformsConfig',
+    # 'learningforms.apps.LearningformsConfig',
     'taggit',
     # 'bootstrap_ui',
     'bootstrap_pagination',

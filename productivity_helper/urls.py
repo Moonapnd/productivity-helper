@@ -13,7 +13,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('miniprojects/', include('miniprojects.urls', namespace='miniprojects')),
     path('lessons/', include('lessons.urls', namespace='lessons')),
-    path('learningforms/', include('learningforms.urls', namespace='learningforms')),
+    # path('learningforms/', include('learningforms.urls', namespace='learningforms')),
     path('admin/', admin.site.urls),
 ]
 
