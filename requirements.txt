@@ -12,4 +12,4 @@ Pillow==7.0.0
 pytz==2019.3
 sorl-thumbnail==12.6.3
 soupsieve==2.0
-sqlparse==0.3.1
+sqlparse==0.4.4
